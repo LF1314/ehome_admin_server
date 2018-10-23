@@ -149,5 +149,27 @@ router.get('/logout',(req,res,next)=>{
   })
 })
 
+//删除管理员
+
+router.delete('/del',auth,async(req,res,next)=>{
+
+  let { id } = req.query
+
+   try {
+     console.log(id)
+        const data = await adminUserData.findByIdAndRemove(id)
+        res.json({
+          code:200,
+          msg:'删除成功'
+      
+        })
+   } catch (error) {
+     res.json({
+       code:400,
+       msh:'删除失败'
+     })
+   }
+})
+
 
 module.exports = router;

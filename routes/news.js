@@ -75,4 +75,35 @@ router.get('/onenew',async(req,res,next)=>{
 
 })
 
+//按照分类查找新闻
+router.get('/newtype',async(req,res,next)=>{
+
+    let { pn = 1 ,size = 10, type} = req.query
+    pn = parseInt(pn)
+    size = parseInt(size)
+
+    try {
+        const newlist = await newdatas.find({type})
+        .skip((pn-1)*size)
+        .limit(size)
+        .sort({_id:-1})
+        .populate({
+            path:'type'
+        })
+        .populate({
+            path:'author',
+            select:('-password')
+        })
+
+        res.json({
+            code:200,
+            msg:'success',
+            data:newlist
+        })
+        
+    } catch (error) {
+        next(error)
+    }
+})
+
 module.exports = router

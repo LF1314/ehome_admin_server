@@ -14,7 +14,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false,maxAge:2 * 3600 * 1000 },
+  cookie: { secure: false,maxAge:1 * 3600 * 1000 },
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }))
 // view engine setup
