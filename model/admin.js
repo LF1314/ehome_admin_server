@@ -1,6 +1,4 @@
-
 const mongoose = require('mongoose')
-
 const adminUserData = mongoose.Schema({
     userName:{
         type:String,
@@ -28,7 +26,6 @@ const adminUserData = mongoose.Schema({
         updatedAt: 'updateTime'
     }
 })
-
 module.exports = mongoose.model('admins',adminUserData)
 
 

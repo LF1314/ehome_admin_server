@@ -3,10 +3,8 @@ var router = express.Router();
 var auth = require ('../control/auth.js')
 const adminUserData = require('../model/admin')
 /* GET users listing. */
-
 //登陆接口
-router.post('/login', async(req, res, next) =>{
-      
+router.post('/login', async(req, res, next) =>{ 
   const {userName,password} = req.body
     if(userName && password){
         try {
@@ -43,13 +41,9 @@ router.post('/login', async(req, res, next) =>{
         msg:"用户名密码必填"
       })
     }
-   
-
 });
 //注册接口 需要 有登陆状态才可以注册
-
 router.post('/singup',auth,async(req,res,next)=>{
-
   let {
     userName,
     password,
@@ -60,9 +54,7 @@ router.post('/singup',auth,async(req,res,next)=>{
     age,
     phone,
     avatar
-
   } = req.body
-
   try {
     const data = await adminUserData.create({
       userName,
@@ -79,20 +71,15 @@ router.post('/singup',auth,async(req,res,next)=>{
       code:200,
       msg:'注册成功',
       data
-    })
-    
+    }) 
   } catch (error) {
     res.json({
       code:401,
       msg:"缺少必要参数"
     })
   }
-
-
 })
-
 //获取管理员列表
-
 router.get('/',auth,async(req,res ,next)=>{
 
    let {pn = 1, size = 10} = req.query
@@ -114,11 +101,8 @@ router.get('/',auth,async(req,res ,next)=>{
    } catch (error) {
      next(error)
    }
-
 })
-
 //获取管理员信息
-
 router.get('/info',auth,async(req,res,next)=>{
   
    let {userName} = req.query
@@ -131,37 +115,26 @@ router.get('/info',auth,async(req,res,next)=>{
           msg:'获取管理员信息成功',
           userinfo
         })
-   } catch (error) {
-     
+   } catch (error) {  
    }
 })
-
 //退出登录接口
-
 router.get('/logout',(req,res,next)=>{
-
   req.session.user = null
-
   res.json({
     code:200,
     msg:'退出登录成功！'
-
   })
 })
-
 //删除管理员
-
 router.delete('/del',auth,async(req,res,next)=>{
-
   let { id } = req.query
-
    try {
      console.log(id)
         const data = await adminUserData.findByIdAndRemove(id)
         res.json({
           code:200,
           msg:'删除成功'
-      
         })
    } catch (error) {
      res.json({
@@ -170,6 +143,4 @@ router.delete('/del',auth,async(req,res,next)=>{
      })
    }
 })
-
-
 module.exports = router;

@@ -1,10 +1,4 @@
-// 新闻分类
-
-
-//新闻模型
-
 const mongoose = require('mongoose')
-
 const categoryData = mongoose.Schema({
   category:String,
 },{
@@ -16,7 +10,6 @@ const categoryData = mongoose.Schema({
         updatedAt: 'updateTime'
     }
 })
-
 module.exports = mongoose.model('category',categoryData)
 
 

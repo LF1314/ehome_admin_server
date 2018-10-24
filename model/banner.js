@@ -1,6 +1,4 @@
-
 const mongoose = require('mongoose')
-
 const bannerData = mongoose.Schema({
     imgUrl:String,
     newId:{
@@ -11,6 +9,14 @@ const bannerData = mongoose.Schema({
     type:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'category'
+    },
+    status:{
+        type:String,
+        default:'1'
+    },
+    index:{
+        type:Number,
+        default:1
     }
 
 },{
@@ -22,7 +28,6 @@ const bannerData = mongoose.Schema({
         updatedAt: 'updateTime'
     }
 })
-
 module.exports = mongoose.model('baners',bannerData)
 
 

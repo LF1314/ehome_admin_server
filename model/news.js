@@ -1,7 +1,5 @@
 //新闻模型
-
 const mongoose = require('mongoose')
-
 const newsData = mongoose.Schema({
    title:String,
    content:String,
@@ -25,7 +23,6 @@ const newsData = mongoose.Schema({
         updatedAt: 'updateTime'
     }
 })
-
 module.exports = mongoose.model('news',newsData)
 
 
