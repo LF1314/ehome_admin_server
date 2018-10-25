@@ -9,13 +9,15 @@ content:{
 ,
 userId:{
     type:mongoose.SchemaTypes.ObjectId,
-    ref:'admins'
+    ref:'users'
 },
 commonts:{
     type:Array
+},
+currentTime:String
 }
-}
-,{
+,
+{
     versionKey:false
 },
 {
@@ -23,8 +25,7 @@ commonts:{
         createdAt: 'createdTime',
         updatedAt: 'updateTime'
     }
-}
-)
+})
 const interModel = mongoose.model('inters',interData)
 module.exports = interModel
 

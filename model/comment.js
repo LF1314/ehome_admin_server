@@ -12,8 +12,9 @@ const commentData = mongoose.Schema({
     },
     userId:{
         type:mongoose.SchemaTypes.ObjectId,
-        ref:'admins'
-    }
+        ref:'users'
+    },
+    timeFormat:String
 },
 {
     versionKey:false

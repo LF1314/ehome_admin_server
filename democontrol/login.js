@@ -1,28 +1,26 @@
 //客户端实现登陆控制
 //加密方式使用jsonwebtoken控制
-
 const express = require('express')
 const router = express.Router()
-const adminUserData = require('../model/admin')
+const UserData = require('../demomodel/user')
 const cret = require('./creat')
 const jwt = require('jsonwebtoken')
 //实现用jwt 生成token
-
 router.post('/login', async(req, res, next) =>{
-      
-    const {userName,password} = req.body
-      if(userName && password){
+    const {idcard,pass} = req.body
+      if(idcard && pass){
           try {
-           const usedata =   await adminUserData.findOne({
-               userName
+           let usedata =   await UserData.findOne({
+            idcard
              })
-            if(usedata && usedata.userName){
-              if(usedata.password == password){
-             const token =  jwt.sign({userId:usedata._id},cret,{expiresIn:60*6})
+            if(usedata && usedata.idcard){
+              if(usedata.pass == pass){
+             const token =  jwt.sign({userId:usedata._id},cret,{expiresIn:6000*6})
                 res.json({
                   code:200,
                   msg:'登陆成功',
-                  token
+                  token,
+                  data:usedata
                 })
               }else{
                 res.json({

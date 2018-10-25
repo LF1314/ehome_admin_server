@@ -1,21 +1,22 @@
 var express = require('express');
 var router = express.Router();
-var auth = require ('../control/auth.js')
+var auth = require ('../control/demoauth.js')
 const interdatas = require('../model/intervction')
 
 //添加互动内容
 
 router.post("/add",auth,async(req,res,next)=>{
     let{
-        content 
+        content ,
+        currentTime,
+        userId
     } = req.body
-   
-    let userId = req.session.user._id
     try {
         console.log(content,userId)
         const interdata = await interdatas.create({
-            content ,
-             userId
+             content,
+             userId,
+             currentTime
         })
         
 
@@ -44,7 +45,7 @@ router.get('/',async(req,res,next)=>{
         .limit(size)
         .populate({
             path:"userId",
-            select:('userName avatar')
+            select:('userName avurl')
         })
         res.json({
             code:200,
