@@ -12,8 +12,13 @@ const commentRouter = require('./comment')
 const demoLoginRouter = require('../democontrol/login')
 const demonewRouter = require('../democontrol/new')
 const userdemoRouter = require('../democontrol/user')
+//跳转管理员
+
+const adminindex = require('../routes/ehomeadmin')
+
 /* GET home page. */
 // 后台管理员api
+router.use('/',adminindex)
 router.use('/admin',adminrouter)
 //新闻api
 router.use('/news',newRouter)

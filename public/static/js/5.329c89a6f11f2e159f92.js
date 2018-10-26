@@ -1,0 +1,2 @@
+webpackJsonp([5],{"4Lha":function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s={render:function(){var t=this.$createElement,e=this._self._c||t;return e("div",{staticClass:"layout_wraper"},[this._v("\n      欢迎来到党建一家后台首页\n      历史上的今天\n      "),e("div",{domProps:{innerHTML:this._s(this.content)}})])},staticRenderFns:[]};var a=n("VU/8")({name:"homeindex",data:function(){return{content:""}}},s,!1,function(t){n("sW3v")},"data-v-f82ae3dc",null);e.default=a.exports},sW3v:function(t,e){}});
+//# sourceMappingURL=5.329c89a6f11f2e159f92.js.map
